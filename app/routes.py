@@ -75,5 +75,5 @@ def all_books():
 
 #The route to access a single book
 @app.route('/api/book/<id>', methods=['GET'])
-def all_books(id):
+def book(id):
     pass
