@@ -74,3 +74,20 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "${{ env.APP_NAME }}-staging" #Must be unique in Heroku
           heroku_email: "okothlyleochieng@gmail.com"
+
+  DeployProd:
+    name: Deploy to Production 
+    needs: [DeployStaging]
+    runs-on: ubuntu-latest
+    environment: 
+      name: Production
+      url: 'https://${{env.APP_NAME}}-production.herokuapp.com/'
+    steps:
+      - name: Deploy
+        run: echo I am deploying ${{ env.APP_NAME }} at https://${{env.APP_NAME}}-production.herokuapp.com/
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "${{ env.APP_NAME }}-production" #Must be unique in Heroku
+          heroku_email: "okothlyleochieng@gmail.com"
