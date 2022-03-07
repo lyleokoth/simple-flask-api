@@ -56,3 +56,21 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "${{ env.APP_NAME }}-dev" #Must be unique in Heroku
           heroku_email: "okothlyleochieng@gmail.com"
+
+  DeployStaging:
+    name: Deploy to Staging 
+    if: github.event.ref == 'refs/heads/main'
+    needs: [Build]
+    runs-on: ubuntu-latest
+    environment: 
+      name: Staging
+      url: 'https://${{env.APP_NAME}}-staging.herokuapp.com/'
+    steps:
+      - name: Deploy
+        run: echo I am deploying ${{ env.APP_NAME }} at https://${{env.APP_NAME}}-staging.herokuapp.com/
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "${{ env.APP_NAME }}-dev" #Must be unique in Heroku
+          heroku_email: "okothlyleochieng@gmail.com"
