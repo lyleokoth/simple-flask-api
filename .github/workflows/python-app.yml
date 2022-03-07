@@ -38,7 +38,6 @@ jobs:
     - name: Test with unittest
       run: |
         python -m unittest discover
-        echo I am deploying ${{ env.APP_NAME }} at https://${{env.APP_NAME}}.herokuapp.com/!
 
   DeployDev:
     name: Deploy to Dev 
@@ -47,10 +46,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: Development
-      url: 'https://simple-flask-api-ci.herokuapp.com/'
+      url: 'https://${{env.APP_NAME}}.herokuapp.com/'
     steps:
       - name: Deploy
-        run: echo I am deploying ${{ env.APP_NAME }} at https://${{env.APP_NAME}}.herokuapp.com/! 
+        run: echo I am deploying ${{ env.APP_NAME }} at https://${{env.APP_NAME}}.herokuapp.com/
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
