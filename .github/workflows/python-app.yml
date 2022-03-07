@@ -38,7 +38,7 @@ jobs:
     - name: Test with unittest
       run: |
         python -m unittest discover
-      run: echo I am deploying ${{ env.APP_NAME }} at https://${{env.APP_NAME}}.herokuapp.com/!
+        echo I am deploying ${{ env.APP_NAME }} at https://${{env.APP_NAME}}.herokuapp.com/!
 
   DeployDev:
     name: Deploy to Dev 
