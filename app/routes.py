@@ -43,6 +43,7 @@ def index():
     """
 
     reply = 'Welcome to the books API!'
+    
     return reply
 
 #The route to access all books
