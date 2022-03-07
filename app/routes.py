@@ -72,3 +72,8 @@ def all_books():
     """
 
     return jsonify(books)
+
+#The route to access a single book
+@app.route('/api/book/<id>', methods=['GET'])
+def all_books(id):
+    pass
