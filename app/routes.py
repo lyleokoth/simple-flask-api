@@ -53,13 +53,16 @@ def all_books():
 
     Called whenever a GET request is made to the /api/books route
 
+
     Parameters
     ----------
     None
 
+
     Raises
     ------
     None
+    
 
     Returns
     -------
