@@ -41,7 +41,7 @@ def index():
     reply: str
         A string description of the api!
     """
-
+   
     reply = 'The books API provides a list of books!'
     
     return reply
